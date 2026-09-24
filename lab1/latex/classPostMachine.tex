@@ -1,0 +1,129 @@
+\doxysection{Post\+Machine Class Reference}
+\hypertarget{classPostMachine}{}\label{classPostMachine}\index{PostMachine@{PostMachine}}
+
+
+Виртуальная машина Поста. Управляет бесконечной лентой, кареткой и выполнением списка команд.  
+
+
+
+
+{\ttfamily \#include $<$Post\+Machine.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classPostMachine_a6950a494341fa935a25f71ca30822d34}\label{classPostMachine_a6950a494341fa935a25f71ca30822d34} 
+{\bfseries Post\+Machine} ()
+\begin{DoxyCompactList}\small\item\em Создает машину с кареткой на нулевой позиции. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPostMachine_a62a978bcbecb09ba87c3b61b852086ef}{Post\+Machine}} (int start\+Head\+Position)
+\begin{DoxyCompactList}\small\item\em Создает машину с кареткой на заданной позиции. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPostMachine_a40d868c86a417d43af0b4daee6417ac3}{set\+Tape}} (vector$<$ int $>$ \&marked\+Cells)
+\begin{DoxyCompactList}\small\item\em Расставляет стартовые метки на ленте. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPostMachine_a23dfdddf07e2d9a797dcb43536f21d8e}{add\+Instruction}} (char type, int next\+Line, int alt\+Line=-\/1)
+\begin{DoxyCompactList}\small\item\em Добавляет одну команду в конец программы. \end{DoxyCompactList}\item 
+\Hypertarget{classPostMachine_adc1f0a9cef243fbe536dfa8488f5d1c0}\label{classPostMachine_adc1f0a9cef243fbe536dfa8488f5d1c0} 
+void {\bfseries run} ()
+\begin{DoxyCompactList}\small\item\em Запускает непрерывное выполнение программы до команды остановки \textquotesingle{}!\textquotesingle{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPostMachine_a3b4c07c22711a51c689f349f1177b960}{step}} ()
+\begin{DoxyCompactList}\small\item\em Выполняет ровно один шаг программы. \end{DoxyCompactList}\item 
+\Hypertarget{classPostMachine_a5c54d221e04652f62c65643f1930cbf3}\label{classPostMachine_a5c54d221e04652f62c65643f1930cbf3} 
+void {\bfseries print\+State} ()
+\begin{DoxyCompactList}\small\item\em Выводит в консоль текущее состояние ленты и положение каретки. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPostMachine_ae716bd32d531c4d189de5930ca3f3214}{load\+Program}} (vector$<$ string $>$ \&code)
+\begin{DoxyCompactList}\small\item\em Загружает готовую программу из массива текстовых строк. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Виртуальная машина Поста. Управляет бесконечной лентой, кареткой и выполнением списка команд. 
+
+\label{doc-constructors}
+\Hypertarget{classPostMachine_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPostMachine_a62a978bcbecb09ba87c3b61b852086ef}\index{PostMachine@{PostMachine}!PostMachine@{PostMachine}}
+\index{PostMachine@{PostMachine}!PostMachine@{PostMachine}}
+\doxysubsubsection{\texorpdfstring{PostMachine()}{PostMachine()}}
+{\footnotesize\ttfamily \label{classPostMachine_a62a978bcbecb09ba87c3b61b852086ef} 
+Post\+Machine\+::\+Post\+Machine (\begin{DoxyParamCaption}\item[{int}]{start\+Head\+Position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Создает машину с кареткой на заданной позиции. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Head\+Position} & Начальная позиция каретки. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classPostMachine_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPostMachine_a23dfdddf07e2d9a797dcb43536f21d8e}\index{PostMachine@{PostMachine}!addInstruction@{addInstruction}}
+\index{addInstruction@{addInstruction}!PostMachine@{PostMachine}}
+\doxysubsubsection{\texorpdfstring{addInstruction()}{addInstruction()}}
+{\footnotesize\ttfamily \label{classPostMachine_a23dfdddf07e2d9a797dcb43536f21d8e} 
+void Post\+Machine\+::add\+Instruction (\begin{DoxyParamCaption}\item[{char}]{type}{, }\item[{int}]{next\+Line}{, }\item[{int}]{alt\+Line}{ = {\ttfamily -\/1}}\end{DoxyParamCaption})}
+
+
+
+Добавляет одну команду в конец программы. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Тип операции. \\
+\hline
+{\em next\+Line} & Следующая строка. \\
+\hline
+{\em alt\+Line} & Альтернативная строка (по умолчанию -\/1). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPostMachine_ae716bd32d531c4d189de5930ca3f3214}\index{PostMachine@{PostMachine}!loadProgram@{loadProgram}}
+\index{loadProgram@{loadProgram}!PostMachine@{PostMachine}}
+\doxysubsubsection{\texorpdfstring{loadProgram()}{loadProgram()}}
+{\footnotesize\ttfamily \label{classPostMachine_ae716bd32d531c4d189de5930ca3f3214} 
+void Post\+Machine\+::load\+Program (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{code}{}\end{DoxyParamCaption})}
+
+
+
+Загружает готовую программу из массива текстовых строк. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Вектор строк с кодом программы. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPostMachine_a40d868c86a417d43af0b4daee6417ac3}\index{PostMachine@{PostMachine}!setTape@{setTape}}
+\index{setTape@{setTape}!PostMachine@{PostMachine}}
+\doxysubsubsection{\texorpdfstring{setTape()}{setTape()}}
+{\footnotesize\ttfamily \label{classPostMachine_a40d868c86a417d43af0b4daee6417ac3} 
+void Post\+Machine\+::set\+Tape (\begin{DoxyParamCaption}\item[{vector$<$ int $>$ \&}]{marked\+Cells}{}\end{DoxyParamCaption})}
+
+
+
+Расставляет стартовые метки на ленте. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em marked\+Cells} & Список индексов ячеек, в которых нужно поставить метку \textquotesingle{}1\textquotesingle{}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPostMachine_a3b4c07c22711a51c689f349f1177b960}\index{PostMachine@{PostMachine}!step@{step}}
+\index{step@{step}!PostMachine@{PostMachine}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily \label{classPostMachine_a3b4c07c22711a51c689f349f1177b960} 
+bool Post\+Machine\+::step (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Выполняет ровно один шаг программы. 
+
+\begin{DoxyReturn}{Returns}
+true, если шаг выполнен успешно. false, если произошла остановка или ошибка. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Post\+Machine.\+h\item 
+Post\+Machine.\+cpp\end{DoxyCompactItemize}

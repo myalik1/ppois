@@ -1,0 +1,44 @@
+\doxysection{Post\+Machine.\+h}
+\hypertarget{PostMachine_8h_source}{}\label{PostMachine_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classInstruction}{Instruction}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classInstruction_a2cf75ce1bfa7614ca75e60136e1b8919}{op}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classInstruction_a1183705d0d2daa72e8334ebb150b76e9}{nextLine}};\ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classInstruction_a5692b3db4512343883f2cef737310394}{altLine}};\ \ \ \ }
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPostMachine_a6950a494341fa935a25f71ca30822d34}{PostMachine}}\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{classPostMachine_a6950a494341fa935a25f71ca30822d34}{PostMachine}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classPostMachine_a6950a494341fa935a25f71ca30822d34}{PostMachine}}(\textcolor{keywordtype}{int}\ startHeadPosition);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPostMachine_a40d868c86a417d43af0b4daee6417ac3}{setTape}}(vector<int>\&\ markedCells);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPostMachine_a23dfdddf07e2d9a797dcb43536f21d8e}{addInstruction}}(\textcolor{keywordtype}{char}\ type,\ \textcolor{keywordtype}{int}\ nextLine,\ \textcolor{keywordtype}{int}\ altLine\ =\ -\/1);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPostMachine_adc1f0a9cef243fbe536dfa8488f5d1c0}{run}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classPostMachine_a3b4c07c22711a51c689f349f1177b960}{step}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPostMachine_a5c54d221e04652f62c65643f1930cbf3}{printState}}();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPostMachine_ae716bd32d531c4d189de5930ca3f3214}{loadProgram}}(vector<string>\&\ code);}
+\DoxyCodeLine{00073\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ headPosition;}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ currentLine;}
+\DoxyCodeLine{00076\ \ \ \ \ unordered\_map<int,\ bool>\ tape;}
+\DoxyCodeLine{00077\ \ \ \ \ vector<Instruction>\ program;}
+\DoxyCodeLine{00078\ \};}
+
+\end{DoxyCode}

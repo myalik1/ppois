@@ -1,0 +1,85 @@
+\doxysection{Multi\+Set.\+h}
+\hypertarget{MultiSet_8h_source}{}\label{MultiSet_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMultiSet}{MultiSet}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classElement_ab0d0e20be9a36ae676202db753faeec9}{Element}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classElement_aa96d52b9946d04559a40a61938eb5db3}{isSubSet}};\ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classElement_aff1684df3b04afebb46ed9a223e6f949}{atom}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classMultiSet}{MultiSet}}*\ \mbox{\hyperlink{classElement_a3b5f18e20d0b48d72f025fcb602ee806}{subSet}};\ \ \ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classElement_ab0d0e20be9a36ae676202db753faeec9}{Element}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{classElement_ab0d0e20be9a36ae676202db753faeec9}{Element}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ val);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{classElement_ab0d0e20be9a36ae676202db753faeec9}{Element}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMultiSet}{MultiSet}}\&\ ms);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classElement_ab0d0e20be9a36ae676202db753faeec9}{Element}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classElement_ab0d0e20be9a36ae676202db753faeec9}{Element}}\&\ other);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classElement_ab0d0e20be9a36ae676202db753faeec9}{Element}}\&\ \mbox{\hyperlink{classElement_adf2e51aa04e11422e5bca8274c8cf710}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classElement_ab0d0e20be9a36ae676202db753faeec9}{Element}}\&\ other);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{classElement_a13d54ba9c08b6bec651402f1c2bb002c}{\string~Element}}();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classElement_a7ff189cab8ebb3216f154bed554ad4b2}{operator==}}(\mbox{\hyperlink{classElement_ab0d0e20be9a36ae676202db753faeec9}{Element}}\&\ other);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classElement_aa205cc0953a0e637f574b6327667ae43}{operator!=}}(\mbox{\hyperlink{classElement_ab0d0e20be9a36ae676202db753faeec9}{Element}}\&\ other);}
+\DoxyCodeLine{00069\ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\{}
+\DoxyCodeLine{00076\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\&\ other);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}(\textcolor{keywordtype}{string}\ str);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\&\ \mbox{\hyperlink{classMultiSet_afa131cce173aa4058e4319ccf8d2becf}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\&\ other);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{\string~MultiSet}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMultiSet_a9bf13b0dd979285f7d6591f6627e7b83}{add}}(\textcolor{keywordtype}{string}\ val);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMultiSet_a9bf13b0dd979285f7d6591f6627e7b83}{add}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\&\ ms);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMultiSet_a9bf13b0dd979285f7d6591f6627e7b83}{add}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classElement}{Element}}\&\ el);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMultiSet_a8b6794ba1d88cdd4e20e7f58a3157649}{remove}}(\mbox{\hyperlink{classElement}{Element}}\&\ el);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMultiSet_a9c80570b3e9adcf92ae2566bdd3626fd}{count}}(\mbox{\hyperlink{classElement}{Element}}\&\ el);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMultiSet_a3296f39aef3c7f7389a75ace95bedde1}{size}}();}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMultiSet_ac0dd5431c120c453bcd4c12d2191481a}{empty}}();}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMultiSet_adc8377c359fca5dd70474d975965e155}{clear}}();}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00157\ \ \ \ \ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\ \mbox{\hyperlink{classMultiSet_a3897fc3bc26df7ff887d92dc44a6f5c2}{operator+}}(\mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\&\ other);}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\ \mbox{\hyperlink{classMultiSet_a2289367d3f13902bba8a22a490ff4243}{operator-\/}}(\mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\&\ other);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00171\ \ \ \ \ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\ \mbox{\hyperlink{classMultiSet_ace3b7aec665cb449a582c9583d85c2c1}{intersect}}(\mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\ other);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00177\ \ \ \ \ vector<Element>\&\ \mbox{\hyperlink{classMultiSet_aea4c524dfba26a5afaf4e3e170baec11}{getElements}}();}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMultiSet_a373756722279c4713b0cdc4a2ec4aed0}{operator==}}(\mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\&\ other);}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classMultiSet_a0091a123b0e0c9fbff1b5c3b4bc726f0}{operator!=}}(\mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\&\ other);}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keyword}{friend}\ ostream\&\ \mbox{\hyperlink{classMultiSet_af02d4d1a6a504cc37968646376ecb371}{operator<<}}(ostream\&\ os,\ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\&\ ms);}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{friend}\ istream\&\ \mbox{\hyperlink{classMultiSet_abc9f48bf60c3d7d6e8a4c0b82fc79727}{operator>>}}(istream\&\ is,\ \mbox{\hyperlink{classMultiSet_a569ff8ae5a1b2dca7062a8b10ec3fed7}{MultiSet}}\&\ ms);}
+\DoxyCodeLine{00202\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00203\ \ \ \ \ vector<Element>\ elements;}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{void}\ parse(\textcolor{keywordtype}{string}\&\ str);}
+\DoxyCodeLine{00205\ \};}
+
+\end{DoxyCode}
