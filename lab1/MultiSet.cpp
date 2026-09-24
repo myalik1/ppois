@@ -117,10 +117,10 @@ MultiSet MultiSet::operator-(MultiSet& other) {
     return result;
 }
 
-MultiSet MultiSet::intersect(MultiSet& other) {
+MultiSet MultiSet::intersect(MultiSet other) {
     MultiSet result;
     for (auto& el : elements) {
-        if (other.count(el) > 0) {
+        if (other.remove(el)) {
             result.add(el);
         }
     }

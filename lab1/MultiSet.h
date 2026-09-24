@@ -45,7 +45,7 @@ public:
 
     MultiSet operator+(MultiSet& other);
     MultiSet operator-(MultiSet& other);
-    MultiSet intersect(MultiSet& other);
+    MultiSet intersect(MultiSet other);
 
     vector<Element>& getElements();
     bool operator==(MultiSet& other);
