@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.15.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: PostMachine.h Source File</title>
+<title>Lab 1 project for PPOIS: PostMachine.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Lab 1 project for PPOIS
    </div>
   </td>
  </tr>
@@ -127,22 +127,28 @@ $(function(){initNavTree('PostMachine_8h_source.html','',''); });
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classPostMachine.html#a5c54d221e04652f62c65643f1930cbf3">printState</a>();</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classPostMachine.html#ae716bd32d531c4d189de5930ca3f3214">loadProgram</a>(vector&lt;string&gt;&amp; code);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">int</span> headPosition;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">int</span> currentLine;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    unordered_map&lt;int, bool&gt; tape;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    vector&lt;Instruction&gt; program;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>};</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classPostMachine.html#a089b8efcfdfadf0f36392a48d3dc3908">reset</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classPostMachine.html#ab082098fe5ca4cc67a357d69627947b6">clearProgram</a>();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">int</span> headPosition;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">int</span> currentLine;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    unordered_map&lt;int, bool&gt; tape;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    vector&lt;Instruction&gt; program;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};</div>
 </div>
 <div class="ttc" id="aclassInstruction_html"><div class="ttname"><a href="classInstruction.html">Instruction</a></div><div class="ttdoc">Команда машины Поста. Описывает одно действие, которое должна выполнить каретка.</div><div class="ttdef"><b>Definition</b> PostMachine.h:14</div></div>
 <div class="ttc" id="aclassInstruction_html_a1183705d0d2daa72e8334ebb150b76e9"><div class="ttname"><a href="classInstruction.html#a1183705d0d2daa72e8334ebb150b76e9">Instruction::nextLine</a></div><div class="ttdeci">int nextLine</div><div class="ttdoc">Номер строки, к которой нужно перейти дальше</div><div class="ttdef"><b>Definition</b> PostMachine.h:17</div></div>
 <div class="ttc" id="aclassInstruction_html_a2cf75ce1bfa7614ca75e60136e1b8919"><div class="ttname"><a href="classInstruction.html#a2cf75ce1bfa7614ca75e60136e1b8919">Instruction::op</a></div><div class="ttdeci">char op</div><div class="ttdoc">Тип операции: &#39;&gt;&#39;, &#39;&lt;&#39;, &#39;1&#39;, &#39;0&#39;, &#39;?&#39;, &#39;!&#39;.</div><div class="ttdef"><b>Definition</b> PostMachine.h:16</div></div>
 <div class="ttc" id="aclassInstruction_html_a5692b3db4512343883f2cef737310394"><div class="ttname"><a href="classInstruction.html#a5692b3db4512343883f2cef737310394">Instruction::altLine</a></div><div class="ttdeci">int altLine</div><div class="ttdoc">Альтернативная строка перехода (используется только для &#39;?&#39;).</div><div class="ttdef"><b>Definition</b> PostMachine.h:18</div></div>
+<div class="ttc" id="aclassPostMachine_html_a089b8efcfdfadf0f36392a48d3dc3908"><div class="ttname"><a href="classPostMachine.html#a089b8efcfdfadf0f36392a48d3dc3908">PostMachine::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Сбрасывает текущую выполняемую строку программы на начало (0).</div><div class="ttdef"><b>Definition</b> PostMachine.cpp:112</div></div>
 <div class="ttc" id="aclassPostMachine_html_a23dfdddf07e2d9a797dcb43536f21d8e"><div class="ttname"><a href="classPostMachine.html#a23dfdddf07e2d9a797dcb43536f21d8e">PostMachine::addInstruction</a></div><div class="ttdeci">void addInstruction(char type, int nextLine, int altLine=-1)</div><div class="ttdoc">Добавляет одну команду в конец программы.</div><div class="ttdef"><b>Definition</b> PostMachine.cpp:21</div></div>
 <div class="ttc" id="aclassPostMachine_html_a3b4c07c22711a51c689f349f1177b960"><div class="ttname"><a href="classPostMachine.html#a3b4c07c22711a51c689f349f1177b960">PostMachine::step</a></div><div class="ttdeci">bool step()</div><div class="ttdoc">Выполняет ровно один шаг программы.</div><div class="ttdef"><b>Definition</b> PostMachine.cpp:29</div></div>
 <div class="ttc" id="aclassPostMachine_html_a40d868c86a417d43af0b4daee6417ac3"><div class="ttname"><a href="classPostMachine.html#a40d868c86a417d43af0b4daee6417ac3">PostMachine::setTape</a></div><div class="ttdeci">void setTape(vector&lt; int &gt; &amp;markedCells)</div><div class="ttdoc">Расставляет стартовые метки на ленте.</div><div class="ttdef"><b>Definition</b> PostMachine.cpp:14</div></div>
 <div class="ttc" id="aclassPostMachine_html_a5c54d221e04652f62c65643f1930cbf3"><div class="ttname"><a href="classPostMachine.html#a5c54d221e04652f62c65643f1930cbf3">PostMachine::printState</a></div><div class="ttdeci">void printState()</div><div class="ttdoc">Выводит в консоль текущее состояние ленты и положение каретки.</div><div class="ttdef"><b>Definition</b> PostMachine.cpp:71</div></div>
 <div class="ttc" id="aclassPostMachine_html_a6950a494341fa935a25f71ca30822d34"><div class="ttname"><a href="classPostMachine.html#a6950a494341fa935a25f71ca30822d34">PostMachine::PostMachine</a></div><div class="ttdeci">PostMachine()</div><div class="ttdoc">Создает машину с кареткой на нулевой позиции.</div><div class="ttdef"><b>Definition</b> PostMachine.cpp:4</div></div>
+<div class="ttc" id="aclassPostMachine_html_ab082098fe5ca4cc67a357d69627947b6"><div class="ttname"><a href="classPostMachine.html#ab082098fe5ca4cc67a357d69627947b6">PostMachine::clearProgram</a></div><div class="ttdeci">void clearProgram()</div><div class="ttdoc">Очищает текущую программу и сбрасывает указатель строки.</div><div class="ttdef"><b>Definition</b> PostMachine.cpp:116</div></div>
 <div class="ttc" id="aclassPostMachine_html_adc1f0a9cef243fbe536dfa8488f5d1c0"><div class="ttname"><a href="classPostMachine.html#adc1f0a9cef243fbe536dfa8488f5d1c0">PostMachine::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Запускает непрерывное выполнение программы до команды остановки &#39;!&#39;.</div><div class="ttdef"><b>Definition</b> PostMachine.cpp:67</div></div>
 <div class="ttc" id="aclassPostMachine_html_ae716bd32d531c4d189de5930ca3f3214"><div class="ttname"><a href="classPostMachine.html#ae716bd32d531c4d189de5930ca3f3214">PostMachine::loadProgram</a></div><div class="ttdeci">void loadProgram(vector&lt; string &gt; &amp;code)</div><div class="ttdoc">Загружает готовую программу из массива текстовых строк.</div><div class="ttdef"><b>Definition</b> PostMachine.cpp:88</div></div>
 </div><!-- fragment --></div><!-- contents -->
