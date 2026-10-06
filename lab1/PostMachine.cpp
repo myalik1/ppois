@@ -87,6 +87,7 @@ void PostMachine::printState() {
 
 void PostMachine::loadProgram(vector<string>& code) {
     program.clear();
+    currentLine = 0;
 
     for (string& line : code) {
         istringstream iss(line);
@@ -106,4 +107,13 @@ void PostMachine::loadProgram(vector<string>& code) {
 
         addInstruction(type, nextLine, altLine);
     }
+}
+
+void PostMachine::reset() {
+    currentLine = 0;
+}
+
+void PostMachine::clearProgram() {
+    program.clear();
+    currentLine = 0;
 }

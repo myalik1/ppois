@@ -70,6 +70,16 @@ public:
      * @param code Вектор строк с кодом программы.
      */
     void loadProgram(vector<string>& code);
+
+    /**
+     * @brief Сбрасывает текущую выполняемую строку программы на начало (0).
+    */
+    void reset();
+
+    /**
+     * @brief Очищает текущую программу и сбрасывает указатель строки.
+     */
+    void clearProgram();
 private:
     int headPosition;
     int currentLine;
