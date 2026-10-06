@@ -1,0 +1,42 @@
+name: lab1 CI/CD
+
+on:
+  push:
+    tags:
+      - "lab1-v*"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    defaults:
+      run:
+        working-directory: ./lab1
+
+    steps:
+    - name: Получение кода
+      uses: actions/checkout@v4
+
+    - name: Установка программ для тестов и анализа
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgtest-dev gcovr cppcheck
+
+    - name: Проверка качества кода
+      run: cppcheck --error-exitcode=1 .
+
+    - name: Запуск тестов и проверка покрытия
+      run: |
+        g++ -O0 --coverage tests.cpp MultiSet.cpp PostMachine.cpp -lgtest -lgtest_main -pthread -o run_tests
+        ./run_tests
+        gcovr -r . --exclude tests.cpp
+
+    - name: Сборка независимого артефакта
+      run: g++ main.cpp MultiSet.cpp PostMachine.cpp -static-libstdc++ -static-libgcc -o app
+
+    - name: Публикация артефакта в Releases
+      uses: softprops/action-gh-release@v2
+      with:
+        files: lab1/app
