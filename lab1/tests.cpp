@@ -1,3 +1,4 @@
+#include "gtest/gtest.h"
 #include <gtest/gtest.h>
 #include <sstream>
 #include "MultiSet.h"
@@ -128,5 +129,31 @@ TEST(PostMachineTest, RunAndLoadProgram) {
 TEST(PostMachineTest, InvalidCommand) {
     PostMachine pm;
     pm.addInstruction('X', 1);
+    EXPECT_FALSE(pm.step());
+}
+
+TEST(PostMachineTest, Reset) {
+    PostMachine pm;
+    vector<string> code = {
+        "> 1",
+        "!"
+    };
+    pm.loadProgram(code);
+    EXPECT_TRUE(pm.step());
+    EXPECT_FALSE(pm.step());
+
+    pm.reset();
+
+    EXPECT_TRUE(pm.step());
+}
+
+TEST(PostMachineTest, ClearProgram){
+    PostMachine pm;
+    vector<string> code = {
+        "> 1",
+        "!"
+    };
+    pm.loadProgram(code);
+    pm.clearProgram();
     EXPECT_FALSE(pm.step());
 }
