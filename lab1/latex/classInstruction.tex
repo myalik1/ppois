@@ -1,0 +1,31 @@
+\doxysection{Instruction Class Reference}
+\hypertarget{classInstruction}{}\label{classInstruction}\index{Instruction@{Instruction}}
+
+
+Команда машины Поста. Описывает одно действие, которое должна выполнить каретка.  
+
+
+
+
+{\ttfamily \#include $<$Post\+Machine.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classInstruction_a2cf75ce1bfa7614ca75e60136e1b8919}\label{classInstruction_a2cf75ce1bfa7614ca75e60136e1b8919} 
+char {\bfseries op}
+\begin{DoxyCompactList}\small\item\em Тип операции\+: \textquotesingle{}\texorpdfstring{$>$}{>}\textquotesingle{}, \textquotesingle{}\texorpdfstring{$<$}{<}\textquotesingle{}, \textquotesingle{}1\textquotesingle{}, \textquotesingle{}0\textquotesingle{}, \textquotesingle{}?\textquotesingle{}, \textquotesingle{}!\textquotesingle{}. \end{DoxyCompactList}\item 
+\Hypertarget{classInstruction_a1183705d0d2daa72e8334ebb150b76e9}\label{classInstruction_a1183705d0d2daa72e8334ebb150b76e9} 
+int {\bfseries next\+Line}
+\begin{DoxyCompactList}\small\item\em Номер строки, к которой нужно перейти дальше \end{DoxyCompactList}\item 
+\Hypertarget{classInstruction_a5692b3db4512343883f2cef737310394}\label{classInstruction_a5692b3db4512343883f2cef737310394} 
+int {\bfseries alt\+Line}
+\begin{DoxyCompactList}\small\item\em Альтернативная строка перехода (используется только для \textquotesingle{}?\textquotesingle{}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Команда машины Поста. Описывает одно действие, которое должна выполнить каретка. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Post\+Machine.\+h\end{DoxyCompactItemize}
