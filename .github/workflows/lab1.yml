@@ -29,9 +29,9 @@ jobs:
 
     - name: Запуск тестов и проверка покрытия
       run: |
-        g++ -O0 --coverage tests.cpp MultiSet.cpp PostMachine.cpp -lgtest -lgtest_main -pthread -o run_tests
+        g++ -O0 --coverage MultiSetTest.cpp PostMachineTest.cpp MultiSet.cpp PostMachine.cpp -lgtest -lgtest_main -pthread -o run_tests
         ./run_tests
-        gcovr -r . --exclude tests.cpp
+        gcovr -r . -e MultiSetTest.cpp -e PostMachineTest.cpp
 
     - name: Сборка независимого артефакта
       run: g++ main.cpp MultiSet.cpp PostMachine.cpp -static-libstdc++ -static-libgcc -o app
