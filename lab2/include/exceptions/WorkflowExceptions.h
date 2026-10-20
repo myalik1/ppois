@@ -14,6 +14,11 @@ private:
     int errorCode_;
 };
 
+class InvalidDocumentStateException : public DocumentWorkflowException {
+public:
+    explicit InvalidDocumentStateException(const std::string& message);
+};
+
 class UnauthorizedAccessException : public DocumentWorkflowException {
 public:
     explicit UnauthorizedAccessException(const std::string& message);
