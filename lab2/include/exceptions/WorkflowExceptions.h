@@ -24,6 +24,16 @@ public:
     explicit UnauthorizedAccessException(const std::string& message);
 };
 
+class DocumentNotFoundException : public DocumentWorkflowException {
+public:
+    explicit DocumentNotFoundException(const std::string& message);
+};
+
+class WorkflowRouteException : public DocumentWorkflowException {
+public:
+    explicit WorkflowRouteException(const std::string& message);
+};
+
 class StorageCapacityExceededException : public DocumentWorkflowException {
 public:
     explicit StorageCapacityExceededException(const std::string& message);
