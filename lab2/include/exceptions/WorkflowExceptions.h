@@ -29,6 +29,16 @@ public:
     explicit DocumentNotFoundException(const std::string& message);
 };
 
+class SignatureVerificationException : public DocumentWorkflowException {
+public:
+    explicit SignatureVerificationException(const std::string& message);
+};
+
+class CertificateExpiredException : public DocumentWorkflowException {
+public:
+    explicit CertificateExpiredException(const std::string& message);
+};
+
 class WorkflowRouteException : public DocumentWorkflowException {
 public:
     explicit WorkflowRouteException(const std::string& message);
