@@ -1,4 +1,4 @@
-#pragma ocne
+#pragma once
 
 #include "../core/IdentityAndAccess.h"
 #include "../documents/DocumentCore.h"
