@@ -59,4 +59,14 @@ public:
     explicit InvalidDocumentDataException(const std::string& message);
 };
 
+class ComplianceViolationException : public DocumentWorkflowException {
+public:
+    explicit ComplianceViolationException(const std::string& message);
+};
+
+class SlaBreachException : public DocumentWorkflowException {
+public:
+    explicit SlaBreachException(const std::string& message);
+};
+
 }
