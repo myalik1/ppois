@@ -49,6 +49,11 @@ public:
     explicit StorageCapacityExceededException(const std::string& message);
 };
 
+class ArchivePolicyViolationException : public DocumentWorkflowException {
+public:
+    explicit ArchivePolicyViolationException(const std::string& message);
+};
+
 class InvalidDocumentDataException : public DocumentWorkflowException {
 public:
     explicit InvalidDocumentDataException(const std::string& message);
