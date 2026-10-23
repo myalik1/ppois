@@ -31,7 +31,7 @@ add_library(docflow_domain STATIC ${DOMAIN_SOURCES})
 
 add_executable(docflow_cli
     src/main.cpp
-    src/cli/ConsoleMenu.cpp
+    cli/ConsoleMenu.cpp
 )
 target_link_libraries(docflow_cli PRIVATE docflow_domain)
 

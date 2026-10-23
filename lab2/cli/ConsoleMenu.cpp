@@ -1,5 +1,5 @@
-#include "../../include/cli/ConsoleMenu.h"
-#include "../../include/exceptions/WorkflowExceptions.h"
+#include "ConsoleMenu.h"
+#include "../include/exceptions/WorkflowExceptions.h"
 #include <vector>
 
 namespace docflow {

@@ -1,4 +1,4 @@
-#include "../include/cli/ConsoleMenu.h"
+#include "../cli/ConsoleMenu.h"
 #include <iostream>
 
 int main() {
