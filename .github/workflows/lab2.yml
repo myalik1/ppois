@@ -1,0 +1,81 @@
+name: Lab 2 CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lab2/**'
+      - '.github/workflows/lab2.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'lab2/**'
+      - '.github/workflows/lab2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-test-analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ lcov gcovr cppcheck
+
+      - name: Run static code analysis (cppcheck)
+        run: |
+          cppcheck --enable=warning,style,performance,portability \
+            --suppress=missingIncludeSystem \
+            --inline-suppr \
+            --error-exitcode=1 \
+            -I lab2/include \
+            lab2/src
+
+      - name: Configure CMake with coverage
+        run: |
+          cmake -S lab2 -B lab2/build -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON
+
+      - name: Build project and tests
+        run: |
+          cmake --build lab2/build --parallel
+
+      - name: Run unit tests
+        run: |
+          ctest --test-dir lab2/build --output-on-failure
+
+      - name: Verify code coverage (>= 90%)
+        run: |
+          cd lab2
+          gcovr -r . --filter 'src/' --exclude 'src/main.cpp' --txt --fail-under-line 90
+
+      - name: Package CLI artifact
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        run: |
+          chmod +x lab2/build/docflow_cli
+          tar -czvf docflow_cli-linux-x64.tar.gz -C lab2/build docflow_cli
+
+      - name: Create GitHub Release automatically on merge to main/master
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: lab2-v1.0.${{ github.run_number }}
+          name: "Lab 2: Document Workflow (v1.0.${{ github.run_number }})"
+          body: |
+            Автоматический релиз лабораторной работы №2 после слияния в основную ветку.
+            - Статический анализ (cppcheck): пройден
+            - Unit-тесты (GoogleTest): пройдены
+            - Покрытие кода (gcovr): > 90%
+          files: |
+            lab2/build/docflow_cli
+            docflow_cli-linux-x64.tar.gz
+          draft: false
+          prerelease: false
+          generate_release_notes: true
