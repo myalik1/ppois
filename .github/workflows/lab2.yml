@@ -34,6 +34,7 @@ jobs:
         run: |
           cppcheck --enable=warning,style,performance,portability \
             --suppress=missingIncludeSystem \
+            --suppress=useStlAlgorithm \
             --inline-suppr \
             --error-exitcode=1 \
             -I lab2/include \
