@@ -42,7 +42,7 @@ jobs:
 
       - name: Configure CMake with coverage
         run: |
-          cmake -S lab2 -B lab2/build -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON
+          cmake -S lab2 -B lab2/build -DCMAKE_BUILD_TYPE=Release -DENABLE_COVERAGE=ON
 
       - name: Build project and tests
         run: |
