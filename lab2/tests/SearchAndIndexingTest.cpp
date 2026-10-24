@@ -1,5 +1,12 @@
 #include "../include/exceptions/WorkflowExceptions.h"
-#include "../include/search/SearchAndIndexing.h"
+#include "../include/documents/Document.h"
+#include "../include/documents/DocumentMetadata.h"
+#include "../include/documents/Tag.h"
+#include "../include/search/DocumentSorter.h"
+#include "../include/search/IndexEntry.h"
+#include "../include/search/SearchEngine.h"
+#include "../include/search/SearchFilter.h"
+#include "../include/search/TagRegistry.h"
 #include <gtest/gtest.h>
 
 using namespace docflow;

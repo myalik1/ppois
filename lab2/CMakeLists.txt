@@ -15,16 +15,58 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 set(DOMAIN_SOURCES
     src/exceptions/WorkflowExceptions.cpp
-    src/core/IdentityAndAccess.cpp
-    src/documents/DocumentCore.cpp
-    src/documents/SpecializedDocuments.cpp
-    src/workflow/WorkflowEngine.cpp
-    src/signatures/DigitalSignatures.cpp
-    src/storage/StorageAndArchive.cpp
-    src/search/SearchAndIndexing.cpp
-    src/notifications/NotificationSystem.cpp
-    src/audit/AuditAndCompliance.cpp
-    src/analytics/AnalyticsAndSystem.cpp
+    src/core/Permission.cpp
+    src/core/Role.cpp
+    src/core/Department.cpp
+    src/core/User.cpp
+    src/core/AccessController.cpp
+    src/documents/Tag.cpp
+    src/documents/Attachment.cpp
+    src/documents/DocumentMetadata.cpp
+    src/documents/DocumentVersion.cpp
+    src/documents/Document.cpp
+    src/documents/DocumentTemplate.cpp
+    src/documents/ContractDocument.cpp
+    src/documents/InvoiceDocument.cpp
+    src/documents/OrderDocument.cpp
+    src/documents/ReportDocument.cpp
+    src/documents/MemoDocument.cpp
+    src/workflow/ApprovalStep.cpp
+    src/workflow/EscalationRule.cpp
+    src/workflow/ApprovalRoute.cpp
+    src/workflow/WorkflowState.cpp
+    src/workflow/WorkflowManager.cpp
+    src/signatures/CryptoHasher.cpp
+    src/signatures/Certificate.cpp
+    src/signatures/DigitalSignature.cpp
+    src/signatures/OfficialStamp.cpp
+    src/signatures/SignatureService.cpp
+    src/storage/StorageLocation.cpp
+    src/storage/Folder.cpp
+    src/storage/ArchivePolicy.cpp
+    src/storage/ArchiveRecord.cpp
+    src/storage/DocumentRepository.cpp
+    src/storage/BackupManager.cpp
+    src/search/SearchFilter.cpp
+    src/search/IndexEntry.cpp
+    src/search/TagRegistry.cpp
+    src/search/DocumentSorter.cpp
+    src/search/SearchEngine.cpp
+    src/notifications/NotificationChannel.cpp
+    src/notifications/Notification.cpp
+    src/notifications/Subscription.cpp
+    src/notifications/Reminder.cpp
+    src/notifications/NotificationService.cpp
+    src/audit/AuditEntry.cpp
+    src/audit/AuditLogger.cpp
+    src/audit/ComplianceRule.cpp
+    src/audit/SecurityIncident.cpp
+    src/audit/ComplianceChecker.cpp
+    src/analytics/WorkflowMetrics.cpp
+    src/analytics/DepartmentStats.cpp
+    src/analytics/SlaMonitor.cpp
+    src/analytics/AnalyticsReporter.cpp
+    src/analytics/DocumentFlowSystem.cpp
 )
 
 add_library(docflow_domain STATIC ${DOMAIN_SOURCES})

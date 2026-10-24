@@ -1,5 +1,12 @@
 #include "../include/exceptions/WorkflowExceptions.h"
-#include "../include/workflow/WorkflowEngine.h"
+#include "../include/core/User.h"
+#include "../include/documents/Document.h"
+#include "../include/documents/DocumentMetadata.h"
+#include "../include/workflow/ApprovalRoute.h"
+#include "../include/workflow/ApprovalStep.h"
+#include "../include/workflow/EscalationRule.h"
+#include "../include/workflow/WorkflowManager.h"
+#include "../include/workflow/WorkflowState.h"
 #include <gtest/gtest.h>
 
 using namespace docflow;

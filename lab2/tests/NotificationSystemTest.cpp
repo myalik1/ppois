@@ -1,5 +1,12 @@
 #include "../include/exceptions/WorkflowExceptions.h"
-#include "../include/notifications/NotificationSystem.h"
+#include "../include/core/User.h"
+#include "../include/documents/Document.h"
+#include "../include/documents/DocumentMetadata.h"
+#include "../include/notifications/Notification.h"
+#include "../include/notifications/NotificationChannel.h"
+#include "../include/notifications/NotificationService.h"
+#include "../include/notifications/Reminder.h"
+#include "../include/notifications/Subscription.h"
 #include <gtest/gtest.h>
 
 using namespace docflow;

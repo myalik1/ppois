@@ -1,5 +1,17 @@
 #include "ConsoleMenu.h"
 #include "../include/exceptions/WorkflowExceptions.h"
+#include "../include/analytics/AnalyticsReporter.h"
+#include "../include/documents/ContractDocument.h"
+#include "../include/documents/DocumentTemplate.h"
+#include "../include/documents/InvoiceDocument.h"
+#include "../include/documents/MemoDocument.h"
+#include "../include/documents/OrderDocument.h"
+#include "../include/documents/ReportDocument.h"
+#include "../include/notifications/Reminder.h"
+#include "../include/search/DocumentSorter.h"
+#include "../include/signatures/OfficialStamp.h"
+#include "../include/storage/ArchivePolicy.h"
+#include "../include/storage/ArchiveRecord.h"
 #include <vector>
 
 namespace docflow {
