@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake g++ lcov gcovr cppcheck
+          sudo apt-get install -y cmake g++ libgtest-dev lcov gcovr cppcheck
 
       - name: Run static code analysis (cppcheck)
         run: |
