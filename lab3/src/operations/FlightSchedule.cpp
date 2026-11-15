@@ -16,11 +16,22 @@ int FlightSchedule::applyWeatherDelayToAll(const WeatherCondition& weather, int 
     if (!weather.getHasThunderstorm() || delayMinutes <= 0) {
         return 0;
     }
+    int delayedCount = 0;
     for (auto& flight : flights_) {
-        flight.delayFlight(delayMinutes);
-        ++delayedFlightsCount_;
+        const std::string& status = flight.getStatus();
+        if (status != "LANDED" && status != "COMPLETED") {
+            flight.delayFlight(delayMinutes);
+            ++delayedCount;
+        }
     }
-    return delayedFlightsCount_;
+    int totalDelayed = 0;
+    for (const auto& flight : flights_) {
+        if (flight.getStatus() == "DELAYED") {
+            ++totalDelayed;
+        }
+    }
+    delayedFlightsCount_ = totalDelayed;
+    return delayedCount;
 }
 
 int FlightSchedule::countActiveFlights() const {
@@ -37,7 +48,7 @@ bool FlightSchedule::removeCompletedFlights() {
     std::size_t before = flights_.size();
     std::vector<Flight> remaining;
     for (const auto& flight : flights_) {
-        if (flight.getStatus() != "LANDED") {
+        if (flight.getStatus() != "LANDED" && flight.getStatus() != "COMPLETED") {
             remaining.push_back(flight);
         }
     }

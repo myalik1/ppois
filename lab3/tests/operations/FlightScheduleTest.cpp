@@ -16,8 +16,8 @@ TEST(FlightScheduleTest, AddDelayAndFilterFlights) {
     EXPECT_EQ(schedule.countActiveFlights(), 1);
 
     WeatherCondition storm(45.0, 400.0, 10.0, true, false);
-    EXPECT_EQ(schedule.applyWeatherDelayToAll(storm, 45), 2);
-    EXPECT_EQ(schedule.getDelayedFlightsCount(), 2);
+    EXPECT_EQ(schedule.applyWeatherDelayToAll(storm, 45), 1);
+    EXPECT_EQ(schedule.getDelayedFlightsCount(), 1);
 
     EXPECT_TRUE(schedule.removeCompletedFlights());
     EXPECT_EQ(schedule.getScheduleDate(), "2026-05-10");
