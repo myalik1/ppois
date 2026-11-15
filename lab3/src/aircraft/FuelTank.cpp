@@ -20,7 +20,6 @@ double FuelTank::refuel(double litersToAdd) {
     if (litersToAdd <= 0.0) {
         return 0.0;
     }
-    isValveOpen_ = true;
     double availableSpace = capacityLiters_ - currentLevelLiters_;
     double actualAdded = litersToAdd > availableSpace ? availableSpace : litersToAdd;
     currentLevelLiters_ += actualAdded;

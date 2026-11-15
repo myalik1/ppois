@@ -31,7 +31,7 @@ double BaggageItem::calculateOverweightFee(double freeAllowanceKg, double ratePe
 }
 
 bool BaggageItem::attachTag(BaggageTag& tag) const {
-    if (!tag.validateTagFormat()) {
+    if (weightKg_ <= 0.0 || !tag.validateTagFormat()) {
         return false;
     }
     tag.markScanned();

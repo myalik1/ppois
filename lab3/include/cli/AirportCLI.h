@@ -27,7 +27,7 @@ private:
     AirportFinance finance_;
 
     void seedInitialState();
-    void printMenu(std::ostream& out) const;
+    static void printMenu(std::ostream& out);
     void displayAllData(std::ostream& out) const;
     void displayPassengersAndTickets(std::ostream& out) const;
     void displayFleetAndFlights(std::ostream& out) const;

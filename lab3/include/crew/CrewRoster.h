@@ -14,7 +14,7 @@ private:
     bool isRosterComplete_;
 
 public:
-    CrewRoster(const std::string& rosterId,
+    explicit CrewRoster(const std::string& rosterId,
                int assignedPilotsCount = 0,
                int assignedAttendantsCount = 0,
                bool isRosterComplete = false);

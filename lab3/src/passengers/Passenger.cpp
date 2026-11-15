@@ -26,7 +26,7 @@ void Passenger::completeCheckIn(const Passport& passport, int currentYear) {
 
 double Passenger::calculateTotalBaggageWeight(const BaggageItem& checkedBag,
                                               const HandLuggage& cabinBag) const {
-    return checkedBag.getWeightKg() + cabinBag.getWeightKg();
+    return passengerId_.empty() ? 0.0 : (checkedBag.getWeightKg() + cabinBag.getWeightKg());
 }
 
 void Passenger::addLoyaltyPoints(LoyaltyCard& card, int points) const {

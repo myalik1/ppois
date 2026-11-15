@@ -35,7 +35,9 @@ void GroundTechnician::inspectAndApproveAircraft(const Engine& engine,
 void GroundTechnician::reportTechnicalIssue(Aircraft& aircraft,
                                             MaintenanceLog& log,
                                             const std::string& issue) {
-    log.reportDefect(aircraft, issue);
+    if (!technicianId_.empty()) {
+        log.reportDefect(aircraft, issue);
+    }
 }
 
 bool GroundTechnician::isCertifiedForHeavyMaintenance() const {

@@ -35,7 +35,8 @@ double Aircraft::calculateCurrentTakeoffWeight(const FuelTank& fuelTank, double 
 }
 
 bool Aircraft::verifySeatCapacity(const CabinLayout& layout, int requestedPassengers) const {
-    return requestedPassengers >= 0 && requestedPassengers <= layout.calculateTotalCapacity();
+    return !tailNumber_.empty() && requestedPassengers >= 0 &&
+    requestedPassengers >= 0 && requestedPassengers <= layout.calculateTotalCapacity();
 }
 
 void Aircraft::groundAircraft() {

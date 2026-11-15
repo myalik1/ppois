@@ -65,7 +65,7 @@ void AirportCLI::seedInitialState() {
     flights_.push_back(defaultFlight);
 }
 
-void AirportCLI::printMenu(std::ostream& out) const {
+void AirportCLI::printMenu(std::ostream& out) {
     out << "\n================ AIRPORT MANAGEMENT SYSTEM ================\n"
         << "1. View All Airport Data (Passengers, Tickets, Fleet, Flights)\n"
         << "2. Register New Passenger & Passport\n"
