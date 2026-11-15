@@ -1,0 +1,83 @@
+name: Lab 3 CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lab3/**'
+      - '.github/workflows/lab3.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'lab3/**'
+      - '.github/workflows/lab3.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-test-analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ lcov gcovr cppcheck
+
+      - name: Run static code analysis (cppcheck)
+        run: |
+          cppcheck --enable=warning,style,performance,portability \
+            --suppress=missingIncludeSystem \
+            --suppress=useStlAlgorithm \
+            --suppress=unusedFunction \
+            --inline-suppr \
+            --error-exitcode=1 \
+            -I lab3/include \
+            lab3/src
+
+      - name: Configure CMake with coverage
+        run: |
+          cmake -S lab3 -B lab3/build -DCMAKE_BUILD_TYPE=Release -DENABLE_COVERAGE=ON
+
+      - name: Build project and tests
+        run: |
+          cmake --build lab3/build --parallel
+
+      - name: Run unit tests
+        run: |
+          ctest --test-dir lab3/build --output-on-failure
+
+      - name: Verify code coverage (>= 90%)
+        run: |
+          cd lab3
+          gcovr -r . --filter 'src/' --exclude 'src/main.cpp' --txt --fail-under-line 90
+
+      - name: Package CLI artifact
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        run: |
+          chmod +x lab3/build/airport_app
+          tar -czvf airport_app-linux-x64.tar.gz -C lab3/build airport_app
+
+      - name: Create GitHub Release automatically on merge to main/master
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: lab3-v1.0.${{ github.run_number }}
+          name: "Lab 3: Airport System (v1.0.${{ github.run_number }})"
+          body: |
+            Автоматический релиз лабораторной работы №3 после слияния в основную ветку.
+            - Статический анализ (cppcheck): пройден
+            - Unit-тесты (GoogleTest): пройдены
+            - Покрытие кода (gcovr): > 90%
+          files: |
+            lab3/build/airport_app
+            airport_app-linux-x64.tar.gz
+          draft: false
+          prerelease: false
+          generate_release_notes: true
