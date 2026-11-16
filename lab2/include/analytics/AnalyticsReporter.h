@@ -11,8 +11,8 @@ class AnalyticsReporter {
 public:
     AnalyticsReporter(std::string reportHeader, bool includeDetails);
     std::string buildMetricsSummary(const WorkflowMetrics& metrics) const;
-    std::string buildDepartmentSummary(
-        const Department& dept, const DepartmentStats& stats) const;
+    static std::string buildDepartmentSummary(
+        const Department& dept, const DepartmentStats& stats);
 
 private:
     std::string reportHeader_;

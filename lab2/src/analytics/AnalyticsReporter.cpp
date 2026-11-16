@@ -14,7 +14,7 @@ std::string AnalyticsReporter::buildMetricsSummary(const WorkflowMetrics& metric
 }
 
 std::string AnalyticsReporter::buildDepartmentSummary(
-    const Department& dept, const DepartmentStats& stats) const {
+    const Department& dept, const DepartmentStats& stats) {
     double ratio = stats.calculateActiveRatio();
     return dept.getDepartmentName() + ":Ratio=" + std::to_string(ratio);
 }
