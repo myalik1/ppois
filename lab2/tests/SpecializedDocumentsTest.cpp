@@ -1,4 +1,12 @@
-#include "../include/documents/SpecializedDocuments.h"
+#include "../include/core/Department.h"
+#include "../include/core/User.h"
+#include "../include/documents/ContractDocument.h"
+#include "../include/documents/Document.h"
+#include "../include/documents/DocumentMetadata.h"
+#include "../include/documents/InvoiceDocument.h"
+#include "../include/documents/MemoDocument.h"
+#include "../include/documents/OrderDocument.h"
+#include "../include/documents/ReportDocument.h"
 #include "../include/exceptions/WorkflowExceptions.h"
 #include <gtest/gtest.h>
 

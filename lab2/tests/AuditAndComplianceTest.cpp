@@ -1,5 +1,14 @@
-#include "../include/audit/AuditAndCompliance.h"
+#include "../include/audit/AuditLogger.h"
+#include "../include/audit/ComplianceChecker.h"
+#include "../include/audit/ComplianceRule.h"
+#include "../include/audit/SecurityIncident.h"
+#include "../include/core/User.h"
+#include "../include/documents/Document.h"
+#include "../include/documents/DocumentVersion.h"
 #include "../include/exceptions/WorkflowExceptions.h"
+#include "../include/signatures/Certificate.h"
+#include "../include/signatures/CryptoHasher.h"
+#include "../include/signatures/SignatureService.h"
 #include <gtest/gtest.h>
 
 using namespace docflow;

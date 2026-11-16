@@ -1,5 +1,12 @@
 #include "../include/exceptions/WorkflowExceptions.h"
-#include "../include/storage/StorageAndArchive.h"
+#include "../include/documents/Document.h"
+#include "../include/documents/DocumentMetadata.h"
+#include "../include/storage/ArchivePolicy.h"
+#include "../include/storage/ArchiveRecord.h"
+#include "../include/storage/BackupManager.h"
+#include "../include/storage/DocumentRepository.h"
+#include "../include/storage/Folder.h"
+#include "../include/storage/StorageLocation.h"
 #include <gtest/gtest.h>
 
 using namespace docflow;

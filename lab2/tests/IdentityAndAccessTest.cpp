@@ -1,4 +1,8 @@
-#include "../include/core/IdentityAndAccess.h"
+#include "../include/core/AccessController.h"
+#include "../include/core/Department.h"
+#include "../include/core/Permission.h"
+#include "../include/core/Role.h"
+#include "../include/core/User.h"
 #include "../include/exceptions/WorkflowExceptions.h"
 #include <gtest/gtest.h>
 
