@@ -28,3 +28,29 @@ public:
 private:
     typename std::vector<Edge<T>*>::iterator ptr_;
 };
+
+template <typename T>
+class ConstIncidentEdgeIterator {
+public:
+    using iterator_category = std::bidirectional_iterator_tag;
+    using value_type = const Edge<T>;
+    using difference_type = std::ptrdiff_t;
+    using pointer = const Edge<T>*;
+    using reference = const Edge<T>&;
+
+    explicit ConstIncidentEdgeIterator(typename std::vector<Edge<T>*>::const_iterator ptr) : ptr_(ptr) {}
+
+    reference operator*() const { return **ptr_; }
+    pointer operator->() const { return *ptr_; }
+
+    ConstIncidentEdgeIterator& operator++() { ++ptr_; return *this; }
+    ConstIncidentEdgeIterator operator++(int) { ConstIncidentEdgeIterator tmp = *this; ++ptr_; return tmp; }
+    ConstIncidentEdgeIterator& operator--() { --ptr_; return *this; }
+    ConstIncidentEdgeIterator operator--(int) { ConstIncidentEdgeIterator tmp = *this; --ptr_; return tmp; }
+
+    bool operator==(const ConstIncidentEdgeIterator& other) const { return ptr_ == other.ptr_; }
+    bool operator!=(const ConstIncidentEdgeIterator& other) const { return ptr_ != other.ptr_; }
+
+private:
+    typename std::vector<Edge<T>*>::const_iterator ptr_;
+};
