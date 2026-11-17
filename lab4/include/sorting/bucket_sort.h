@@ -1,28 +1,80 @@
 #pragma once
-#include <vector>
 #include <algorithm>
+#include <cstddef>
 #include <iterator>
+#include <type_traits>
+#include <vector>
 #include "selection_sort.h"
 
-inline void bucketSort(std::vector<double>& arr) {
-    if (arr.empty()) return;
-    size_t n = arr.size();
-    std::vector<std::vector<double>> buckets(n);
+namespace detail {
+const double kBucketRangeEpsilon = 1e-9;
 
-    double max_val = *std::max_element(arr.begin(), arr.end());
-    double min_val = *std::min_element(arr.begin(), arr.end());
+struct DefaultBucketKey {
+    template <typename T>
+    double operator()(const T& value) const {
+        return static_cast<double>(value);
+    }
+};
+}
 
-    if (max_val == min_val) return;
+template <typename RandomIt, typename KeyExtractor,
+          typename = std::enable_if_t<!std::is_integral_v<KeyExtractor>>>
+void bucketSort(RandomIt first, RandomIt last, KeyExtractor key_fn) {
+    const auto distance = std::distance(first, last);
+    if (distance <= 1) return;
 
-    for (double val : arr) {
-        size_t bi = static_cast<size_t>(n * (val - min_val) / (max_val - min_val + 1e-9));
-        if (bi >= n) bi = n - 1;
-        buckets[bi].push_back(val);
+    using ValueType = typename std::iterator_traits<RandomIt>::value_type;
+    const std::size_t count = static_cast<std::size_t>(distance);
+    std::vector<std::vector<ValueType>> buckets(count);
+
+    double min_key = key_fn(*first);
+    double max_key = min_key;
+    for (auto it = std::next(first); it != last; ++it) {
+        const double current_key = key_fn(*it);
+        if (current_key < min_key) min_key = current_key;
+        if (current_key > max_key) max_key = current_key;
     }
 
-    arr.clear();
+    if (max_key == min_key) return;
+
+    const double range = max_key - min_key + detail::kBucketRangeEpsilon;
+    for (auto it = first; it != last; ++it) {
+        const double normalized = (key_fn(*it) - min_key) / range;
+        std::size_t bucket_idx = static_cast<std::size_t>(count * normalized);
+        if (bucket_idx >= count) bucket_idx = count - 1;
+        buckets[bucket_idx].push_back(*it);
+    }
+
+    auto out_it = first;
     for (auto& bucket : buckets) {
         selectionSort(bucket);
-        arr.insert(arr.end(), bucket.begin(), bucket.end());
+        out_it = std::move(bucket.begin(), bucket.end(), out_it);
     }
+}
+
+template <typename RandomIt>
+void bucketSort(RandomIt first, RandomIt last) {
+    bucketSort(first, last, detail::DefaultBucketKey{});
+}
+
+template <typename Container, typename KeyExtractor,
+          typename = std::enable_if_t<!std::is_integral_v<KeyExtractor>>>
+void bucketSort(Container& container, KeyExtractor key_fn) {
+    bucketSort(std::begin(container), std::end(container), key_fn);
+}
+
+template <typename Container>
+void bucketSort(Container& container) {
+    bucketSort(std::begin(container), std::end(container), detail::DefaultBucketKey{});
+}
+
+template <typename T, typename KeyExtractor>
+void bucketSort(T* arr, std::size_t size, KeyExtractor key_fn) {
+    if (arr == nullptr || size <= 1) return;
+    bucketSort(arr, arr + size, key_fn);
+}
+
+template <typename T>
+void bucketSort(T* arr, std::size_t size) {
+    bucketSort(arr, size, detail::DefaultBucketKey{});
 }

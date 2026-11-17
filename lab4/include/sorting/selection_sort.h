@@ -1,5 +1,6 @@
 #pragma once
 #include <algorithm>
+#include <cstddef>
 #include <iterator>
 
 template <typename RandomIt>
@@ -21,4 +22,10 @@ void selectionSort(RandomIt first, RandomIt last) {
 template <typename Container>
 void selectionSort(Container& container) {
     selectionSort(std::begin(container), std::end(container));
+}
+
+template <typename T>
+void selectionSort(T* arr, std::size_t size) {
+    if (arr == nullptr || size == 0) return;
+    selectionSort(arr, arr + size);
 }
