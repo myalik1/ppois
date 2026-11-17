@@ -1,0 +1,83 @@
+name: Lab 4 CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lab4/**'
+      - '.github/workflows/lab4.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'lab4/**'
+      - '.github/workflows/lab4.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-test-analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ libgtest-dev lcov gcovr cppcheck
+
+      - name: Run static code analysis (cppcheck)
+        run: |
+          cppcheck --enable=warning,style,performance,portability \
+            --suppress=missingIncludeSystem \
+            --suppress=useStlAlgorithm \
+            --suppress=unusedFunction \
+            --inline-suppr \
+            --error-exitcode=1 \
+            -I lab4/include \
+            lab4/src lab4/tests
+
+      - name: Configure CMake
+        run: |
+          cmake -S lab4 -B lab4/build -DCMAKE_BUILD_TYPE=Release -DENABLE_COVERAGE=ON
+
+      - name: Build project and tests
+        run: |
+          cmake --build lab4/build --parallel
+
+      - name: Run unit tests
+        run: |
+          ctest --test-dir lab4/build --output-on-failure
+
+      - name: Verify code coverage (>= 90%)
+        run: |
+          cd lab4
+          gcovr -r . --object-directory build --filter 'include/' --exclude 'include/cli/console_menu.h' --txt --fail-under-line 90
+
+      - name: Build standalone Release artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          chmod +x lab4/build/lab4_app
+          tar -czvf lab4_app-linux-x64.tar.gz -C lab4/build lab4_app
+
+      - name: Create GitHub Release automatically on merge to main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: lab4-v1.0.${{ github.run_number }}
+          name: "Lab 4: Sorting Algorithms and Graph Class (v1.0.${{ github.run_number }})"
+          body: |
+            Автоматический релиз лабораторной работы №4 после слияния в основную ветку.
+            - Статический анализ (cppcheck): пройден
+            - Unit-тесты (GoogleTest): пройдены
+            - Покрытие кода (gcovr): > 90%
+          files: |
+            lab4/build/lab4_app
+            lab4_app-linux-x64.tar.gz
+          draft: false
+          prerelease: false
+          generate_release_notes: true
