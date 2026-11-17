@@ -24,6 +24,21 @@ private:
         }
         return -1;
     }
+    void rebuildAdjacency() {
+        adjacency_list_.assign(vertices_.size(), {});
+        adjacent_vertices_list_.assign(vertices_.size(), {});
+
+        for (size_t i = 0; i < edges_.size(); ++i) {
+            int u = findVertexIndex(edges_[i].getFirst());
+            int v = findVertexIndex(edges_[i].getSecond());
+            if (u != -1 && v != -1) {
+                adjacency_list_[u].push_back(&edges_[i]);
+                adjacency_list_[v].push_back(&edges_[i]);
+                adjacent_vertices_list_[u].push_back(&vertices_[v]);
+                adjacent_vertices_list_[v].push_back(&vertices_[u]);
+            }
+        }
+    }
 
 public:
     using vertex_type = Vertex<T>;
@@ -45,22 +60,7 @@ public:
         if (this == &other) return *this;
         vertices_ = other.vertices_;
         edges_ = other.edges_;
-
-        adjacency_list_.clear();
-        adjacency_list_.resize(vertices_.size());
-        adjacent_vertices_list_.clear();
-        adjacent_vertices_list_.resize(vertices_.size());
-
-        for (size_t i = 0; i < edges_.size(); ++i) {
-            int u = findVertexIndex(edges_[i].getFirst());
-            int v = findVertexIndex(edges_[i].getSecond());
-            if (u != -1 && v != -1) {
-                adjacency_list_[u].push_back(&edges_[i]);
-                adjacency_list_[v].push_back(&edges_[i]);
-                adjacent_vertices_list_[u].push_back(&vertices_[v]);
-                adjacent_vertices_list_[v].push_back(&vertices_[u]);
-            }
-        }
+        rebuildAdjacency();
         return *this;
     }
 
@@ -106,8 +106,7 @@ public:
     void addVertex(const Vertex<T>& v) {
         if (hasVertex(v)) return;
         vertices_.push_back(v);
-        adjacency_list_.emplace_back();
-        adjacent_vertices_list_.emplace_back();
+        rebuildAdjacency();
     }
 
     void addEdge(const Vertex<T>& v1, const Vertex<T>& v2, double weight = 1.0) {
@@ -117,12 +116,7 @@ public:
         if (hasEdge(v1, v2)) return;
 
         edges_.emplace_back(v1, v2, weight);
-        Edge<T>* edgePtr = &edges_.back();
-
-        adjacency_list_[u].push_back(edgePtr);
-        adjacency_list_[w].push_back(edgePtr);
-        adjacent_vertices_list_[u].push_back(&vertices_[w]);
-        adjacent_vertices_list_[w].push_back(&vertices_[u]);
+        rebuildAdjacency();
     }
 
     void removeVertex(const Vertex<T>& v) {
@@ -147,8 +141,7 @@ public:
         }
 
         vertices_.erase(vertices_.begin() + idx);
-        adjacency_list_.erase(adjacency_list_.begin() + idx);
-        adjacent_vertices_list_.erase(adjacent_vertices_list_.begin() + idx);
+        rebuildAdjacency();
     }
 
     void removeEdge(const Vertex<T>& v1, const Vertex<T>& v2) {
@@ -156,29 +149,15 @@ public:
         int w = findVertexIndex(v2);
         if (u == -1 || w == -1) return;
 
-        Edge<T>* targetEdge = nullptr;
-        for (auto it = edges_.begin(); it != edges_.end(); ++it) {
-            if ((it->getFirst() == v1 && it->getSecond() == v2) ||
-                (it->getFirst() == v2 && it->getSecond() == v1)) {
-                targetEdge = &(*it);
-                edges_.erase(it);
-                break;
-            }
+        auto it = std::find_if(edges_.begin(), edges_.end(), [&](const Edge<T>& e) {
+            return (e.getFirst() == v1 && e.getSecond() == v2) ||
+                    (e.getFirst() == v2 && e.getSecond() == v1);
+        });
+
+        if (it != edges_.end()) {
+            edges_.erase(it);
+            rebuildAdjacency();
         }
-
-        if (!targetEdge) return;
-
-        auto cleanList = [](auto& vec, auto* target) {
-            vec.erase(std::remove(vec.begin(), vec.end(), target), vec.end());
-        };
-        cleanList(adjacency_list_[u], targetEdge);
-        cleanList(adjacency_list_[w], targetEdge);
-
-        auto cleanVertList = [](auto& vec, const Vertex<T>& vert) {
-            vec.erase(std::remove_if(vec.begin(), vec.end(), [&](auto* v){ return *v == vert; }), vec.end());
-        };
-        cleanVertList(adjacent_vertices_list_[u], v2);
-        cleanVertList(adjacent_vertices_list_[w], v1);
     }
 
     void removeVertex(iterator it) {
