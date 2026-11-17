@@ -81,3 +81,20 @@ TEST(UndirectedGraphTest, ExtendedOperationsAndExceptions) {
     g.clear();
     EXPECT_TRUE(g.empty());
 }
+
+TEST(UndirectedGraphTest, SameVertexCountComparisonAndIterators) {
+    UndirectedGraph<int> g1;
+    UndirectedGraph<int> g2;
+    Vertex<int> v1(1), v2(2);
+
+    g1.addVertex(v1);
+    g1.addVertex(v2);
+    g2.addVertex(v1);
+    g2.addVertex(v2);
+    g2.addEdge(v1, v2, 1.0);
+
+    EXPECT_TRUE(g1 < g2);
+    EXPECT_TRUE(g2 > g1);
+    EXPECT_TRUE(g2.edgesCBegin() != g2.edgesCEnd());
+    EXPECT_TRUE(g2.edgesRBegin() != g2.edgesREnd());
+}
