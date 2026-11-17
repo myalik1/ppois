@@ -7,12 +7,12 @@ class ConsoleMenu {
 private:
     UndirectedGraph<std::string> graph_;
 
-    void handleSelectionSort();
-    void handleBucketSort();
+    static void handleSelectionSort();
+    static void handleBucketSort();
     void handleGraphMenu();
 
     Vertex<std::string>* findVertexByName(const std::string& name);
-    void clearInputBuffer();
+    static void clearInputBuffer();
 
 public:
     void run();

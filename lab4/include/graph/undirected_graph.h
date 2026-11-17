@@ -80,7 +80,7 @@ public:
         int u = findVertexIndex(v1);
         int w = findVertexIndex(v2);
         if (u == -1 || w == -1) return false;
-        for (auto* edge : adjacency_list_[u]) {
+        for (const auto* edge : adjacency_list_[u]) {
             if ((edge->getFirst() == v1 && edge->getSecond() == v2) ||
                 (edge->getFirst() == v2 && edge->getSecond() == v1)) {
                 return true;
@@ -124,7 +124,7 @@ public:
         if (idx == -1) return;
 
         auto incident = adjacency_list_[idx];
-        for (auto* edge : incident) {
+        for (const auto* edge : incident) {
             removeEdge(edge->getFirst(), edge->getSecond());
         }
 

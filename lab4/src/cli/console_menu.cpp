@@ -116,8 +116,8 @@ void ConsoleMenu::handleGraphMenu() {
                     continue;
                 }
 
-                auto* v1 = findVertexByName(name1);
-                auto* v2 = findVertexByName(name2);
+                const auto* v1 = findVertexByName(name1);
+                const auto* v2 = findVertexByName(name2);
                 if (!v1 || !v2) {
                     std::cout << "Error: Both vertices must exist in the graph.\n";
                 } else {
@@ -128,7 +128,7 @@ void ConsoleMenu::handleGraphMenu() {
                 std::string name;
                 std::cout << "Enter vertex label to remove: ";
                 std::cin >> name;
-                auto* v = findVertexByName(name);
+                const auto* v = findVertexByName(name);
                 if (!v) {
                     std::cout << "Vertex not found.\n";
                 } else {
@@ -141,8 +141,8 @@ void ConsoleMenu::handleGraphMenu() {
                 std::cin >> name1;
                 std::cout << "Enter second vertex label: ";
                 std::cin >> name2;
-                auto* v1 = findVertexByName(name1);
-                auto* v2 = findVertexByName(name2);
+                const auto* v1 = findVertexByName(name1);
+                const auto* v2 = findVertexByName(name2);
                 if (!v1 || !v2) {
                     std::cout << "One or both vertices not found.\n";
                 } else {
@@ -153,7 +153,7 @@ void ConsoleMenu::handleGraphMenu() {
                 std::string name;
                 std::cout << "Enter vertex label: ";
                 std::cin >> name;
-                auto* v = findVertexByName(name);
+                const auto* v = findVertexByName(name);
                 if (!v) {
                     std::cout << "Vertex not found.\n";
                 } else {
