@@ -1,15 +1,20 @@
 #pragma once
 
-#include "../include/analytics/AnalyticsAndSystem.h"
-#include "../include/audit/AuditAndCompliance.h"
-#include "../include/core/IdentityAndAccess.h"
-#include "../include/documents/DocumentCore.h"
-#include "../include/documents/SpecializedDocuments.h"
-#include "../include/notifications/NotificationSystem.h"
-#include "../include/search/SearchAndIndexing.h"
-#include "../include/signatures/DigitalSignatures.h"
-#include "../include/storage/StorageAndArchive.h"
-#include "../include/workflow/WorkflowEngine.h"
+#include "../include/analytics/DepartmentStats.h"
+#include "../include/analytics/DocumentFlowSystem.h"
+#include "../include/analytics/SlaMonitor.h"
+#include "../include/analytics/WorkflowMetrics.h"
+#include "../include/audit/ComplianceChecker.h"
+#include "../include/core/AccessController.h"
+#include "../include/core/Department.h"
+#include "../include/core/User.h"
+#include "../include/notifications/NotificationService.h"
+#include "../include/search/SearchEngine.h"
+#include "../include/search/TagRegistry.h"
+#include "../include/signatures/Certificate.h"
+#include "../include/signatures/SignatureService.h"
+#include "../include/storage/BackupManager.h"
+#include "../include/storage/Folder.h"
 #include <iostream>
 
 namespace docflow {

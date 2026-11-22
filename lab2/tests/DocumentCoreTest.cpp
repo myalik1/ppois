@@ -1,4 +1,10 @@
-#include "../include/documents/DocumentCore.h"
+#include "../include/core/User.h"
+#include "../include/documents/Attachment.h"
+#include "../include/documents/Document.h"
+#include "../include/documents/DocumentMetadata.h"
+#include "../include/documents/DocumentTemplate.h"
+#include "../include/documents/DocumentVersion.h"
+#include "../include/documents/Tag.h"
 #include "../include/exceptions/WorkflowExceptions.h"
 #include <gtest/gtest.h>
 

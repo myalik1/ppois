@@ -1,5 +1,12 @@
 #include "../include/exceptions/WorkflowExceptions.h"
-#include "../include/signatures/DigitalSignatures.h"
+#include "../include/core/User.h"
+#include "../include/documents/Document.h"
+#include "../include/documents/DocumentMetadata.h"
+#include "../include/signatures/Certificate.h"
+#include "../include/signatures/CryptoHasher.h"
+#include "../include/signatures/DigitalSignature.h"
+#include "../include/signatures/OfficialStamp.h"
+#include "../include/signatures/SignatureService.h"
 #include <gtest/gtest.h>
 
 using namespace docflow;
